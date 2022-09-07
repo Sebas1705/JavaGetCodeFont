@@ -2,9 +2,9 @@ package com.Launcher;
 
 import java.awt.*;
 
-public class FontDestop {
+public class FontDesktop {
     private String[] fonts;
-    public FontDestop() {
+    public FontDesktop() {
         fonts=GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     }
     public String[] getFonts() {return fonts;} 

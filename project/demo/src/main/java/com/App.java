@@ -1,5 +1,9 @@
 package com;
 
+import java.awt.*;
+
+import com.GraphicsSwing.Frames.MainFrame;
+import com.GraphicsSwing.Frames.StarterFrame;
 import com.Launcher.ProgramLauncher;
 
 /**
@@ -14,6 +18,8 @@ public final class App {
      * @param args : String[] of arguments.
      */
     public static void main(String[] args) {
-        pl.launch(args);
+        //new StarterFrame("TituloPrincipal","TituloSecundario");
+        new MainFrame();
+        //pl.launch(args);
     }
 }

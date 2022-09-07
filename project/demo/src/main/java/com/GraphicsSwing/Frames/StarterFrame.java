@@ -1,10 +1,9 @@
 package com.GraphicsSwing.Frames;
 
 import javax.swing.*;
-import javax.swing.event.*;
-
-
-import javax.swing.border.*;
+import com.GraphicsSwing.Components.MyButton;
+import com.GraphicsSwing.Components.MyLabel;
+import com.GraphicsSwing.Components.PanelWithBackImage;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -12,42 +11,67 @@ import java.net.URI;
 
 public class StarterFrame extends JFrame implements ActionListener{
     
-    private Dimension size = new Dimension(700,800);
-    private Toolkit tk = Toolkit.getDefaultToolkit();
-    private Dimension screen = tk.getScreenSize();
-    private Point location  = new Point((int)(screen.getWidth()/2-size.getWidth()/2),(int)(screen.getHeight()/2-size.getHeight()/2));
-    private Color back = new Color(79, 12, 12),foreground = new Color(255,255,255);
-    private Font letter = new Font("Segoe Print", 0, 30), hiper = new Font("Rage Italic",0,20);
-    //Componentes:
+    //Atributes
+    private Dimension size;
+    private Toolkit tk;
+    private Dimension screen;
+    private Point location;
+    private Color back,foreground;
+    private Font title,sub,letter,hiper;
+    private GridBagConstraints gbc;
+    //End Atributes.
+    //Components:
     private JPanel panelSouth,panelCenter,panelInitButtom,panelLinksInicio,panelBackground;
     private JButton initSelButton,linkGithubButton,linkGmailButton,linkCodeWarsButton,linkURJCmailButton;
+    private JLabel mainTitle,subTitle;
+    //End Components
 
-    public StarterFrame(){
-        initComponents();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocation(location);
-        setSize(size);
-        setIconImage(tk.getImage("project/demo/src/main/img/icons/tic-tac-toe.png"));
-        setTitle("Ventana de Inicio");
-        setResizable(false);
-        setVisible(true);
+    //Constructors:
+    public StarterFrame(String title,String subTitle){
+        initAtributes();
+        initComponents(title,subTitle);
+        initFrame();
     }
+    //End Constructors.
 
-    
-    private void initComponents() {
+    //Privates Methods:
+    private void initAtributes(){
+        size=new Dimension(700,800);
+        tk=Toolkit.getDefaultToolkit();
+        screen=tk.getScreenSize();
+        location=new Point((int)(screen.getWidth()/2-size.getWidth()/2),(int)(screen.getHeight()/2-size.getHeight()/2));
+        back=new Color(79, 12, 12);
+        foreground=new Color(255,255,255);
+        title=new Font("",Font.BOLD,40);
+        sub=new Font("",Font.ITALIC,20);
+        letter=new Font("Segoe Print", 0, 30);
+        hiper=new Font("Rage Italic",0,20);
+        gbc=new GridBagConstraints();
+        gbc.fill=GridBagConstraints.BOTH;
+    }
+    private void initComponents(String titleS,String subTitleS) {
         //PanelBackground:
-        panelBackground = new PanelWithBackImage("project/demo/src/main/img/backgrounds/backStarterFrame.png");
-        panelBackground.setBounds(0,0,(int)size.getWidth(),(int)size.getHeight());
+        panelBackground = new PanelWithBackImage("project/demo/src/main/img/backs/backStarterFrame.png");
+        panelBackground.setPreferredSize(size);
         panelBackground.setLayout(new BorderLayout());
             //PanelCenter:
             panelCenter = new JPanel();
             panelCenter.setBackground(back);
             panelCenter.setOpaque(false);
+            panelCenter.setLayout(new GridBagLayout());
+                //MainTitle:
+                mainTitle=new MyLabel(titleS,title,foreground,new Dimension(500,400));
+                mainTitle.setVerticalAlignment(JLabel.BOTTOM);
+                //End MainTitle.
+                //SubTitle:
+                subTitle=new MyLabel(subTitleS,sub,foreground,new Dimension(500,200));
+                subTitle.setVerticalAlignment(JLabel.TOP);
+                //End SubTitle.
             //End PanelCenter.
             //PanelSouth:
             panelSouth = new JPanel();
             panelSouth.setBackground(back);
-            panelSouth.setPreferredSize(new Dimension((int)size.getWidth(),175));
+            panelSouth.setPreferredSize(new Dimension((int)size.getWidth(),200));
             panelSouth.setOpaque(false);
             panelSouth.setLayout(new BoxLayout(panelSouth, BoxLayout.Y_AXIS));
                 //PanelBotonInicio:
@@ -56,16 +80,15 @@ public class StarterFrame extends JFrame implements ActionListener{
                 panelInitButtom.setMinimumSize(new Dimension((int)size.getWidth(),75));
                 panelInitButtom.setLayout(new FlowLayout());
                     //BotonInicio:
-                    initSelButton=new MyButton("  Seleccion de app  ",letter,foreground,new Dimension(200,75),this);
+                    initSelButton=new MyButton("  Start  ",letter,foreground,new Dimension(200,75),this);
                     //End BotonInicio.
                 //End PanelBotonInicio. 
                 //PanelLinksInicio:
-                panelLinksInicio = new PanelWithBackImage("project/demo/src/main/img/backgrounds/backPanelSouthStarterFrame");
+                panelLinksInicio = new PanelWithBackImage("project/demo/src/main/img/backs/backPanelSouthStarterFrame");
                 panelLinksInicio.setMinimumSize(new Dimension((int)size.getWidth(),100));
                 panelLinksInicio.setLayout(new GridLayout(2,2));
                     //LinkGithubButton:
                     linkGithubButton=new MyButton("   Sebas1057",hiper,foreground,null,this);
-                    linkGithubButton.setAlignmentX(JButton.LEFT_ALIGNMENT);
                     linkGithubButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/github.png")));
                     linkGithubButton.setOpaque(false);
                     linkGithubButton.setFocusable(false);
@@ -73,7 +96,6 @@ public class StarterFrame extends JFrame implements ActionListener{
                     //End LinkGithubButton.
                     //LinkURJCmailButton:
                     linkURJCmailButton=new MyButton(" sr.entrerrios.2020",hiper,foreground,null,this);
-                    linkURJCmailButton.setAlignmentX(JButton.LEFT_ALIGNMENT);
                     linkURJCmailButton.setFocusable(false);
                     linkURJCmailButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/urjc.png")));
                     linkURJCmailButton.setOpaque(false);
@@ -81,7 +103,6 @@ public class StarterFrame extends JFrame implements ActionListener{
                     //End LinkURJCmailButton.
                     //LinkGmailButton:
                     linkGmailButton = new MyButton(" sebssgarcia502580",hiper,foreground,null,this);
-                    linkGmailButton.setAlignmentX(JButton.LEFT_ALIGNMENT);
                     linkGmailButton.setFocusable(false);
                     linkGmailButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/gmail.png")));
                     linkGmailButton.setOpaque(false);
@@ -89,7 +110,6 @@ public class StarterFrame extends JFrame implements ActionListener{
                     //End LinkGmailButton.
                     //linkCodeWarsButton:
                     linkCodeWarsButton = new MyButton("  Sebas1705",hiper,foreground,null,this);
-                    linkCodeWarsButton.setAlignmentX(JButton.LEFT_ALIGNMENT);
                     linkCodeWarsButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/codewars.png")));
                     linkCodeWarsButton.setOpaque(false);
                     linkCodeWarsButton.setFocusable(false);
@@ -100,6 +120,10 @@ public class StarterFrame extends JFrame implements ActionListener{
         //End PanelBackground.
         //Adds:
         panelBackground.add(panelCenter,BorderLayout.CENTER);
+        gbc.gridx=0;gbc.gridy=0;gbc.gridheight=2;gbc.gridwidth=3;
+        panelCenter.add(mainTitle,gbc);
+        gbc.gridx=0;gbc.gridy=3;gbc.gridheight=1;gbc.gridwidth=3;
+        panelCenter.add(subTitle,gbc);
         panelInitButtom.add(initSelButton);
         panelSouth.add(panelInitButtom);
         panelLinksInicio.add(linkGithubButton);
@@ -108,11 +132,18 @@ public class StarterFrame extends JFrame implements ActionListener{
         panelLinksInicio.add(linkCodeWarsButton);
         panelSouth.add(panelLinksInicio);
         panelBackground.add(panelSouth, BorderLayout.SOUTH);
-        this.add(panelBackground);
+        add(panelBackground);
         //End Adds.
     }
-
-    //Private Methods:
+    private void initFrame(){
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocation(location);
+        setIconImage(tk.getImage("project/demo/src/main/img/icons/F_512px.png"));
+        setTitle("FontApp");
+        setResizable(false);
+        setVisible(true);
+        pack();
+    }
     private void openLink(URI uri) throws IOException{
         Desktop.getDesktop().browse(uri);
     }
@@ -129,8 +160,8 @@ public class StarterFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==initSelButton){
-            setVisible(false);
-            new SelectFrame(this);
+            new MainFrame();
+            dispose();
         }else if(e.getSource()==linkGithubButton){
             try {
                 openLink(new URI("https://github.com/Sebas1705"));
