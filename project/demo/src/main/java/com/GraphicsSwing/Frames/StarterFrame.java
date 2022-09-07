@@ -42,8 +42,8 @@ public class StarterFrame extends JFrame implements ActionListener{
         location=new Point((int)(screen.getWidth()/2-size.getWidth()/2),(int)(screen.getHeight()/2-size.getHeight()/2));
         back=new Color(79, 12, 12);
         foreground=new Color(255,255,255);
-        title=new Font("",Font.BOLD,40);
-        sub=new Font("",Font.ITALIC,20);
+        title=new Font("Script MT Bold",Font.ITALIC,40);
+        sub=new Font("Script MT Bold",Font.BOLD,30);
         letter=new Font("Segoe Print", 0, 30);
         hiper=new Font("Rage Italic",0,20);
         gbc=new GridBagConstraints();
