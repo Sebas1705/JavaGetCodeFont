@@ -53,7 +53,7 @@ public class StarterFrame extends JFrame implements ActionListener{
     }
     private void initComponents(String titleS,String subTitleS) {
         //PanelBackground:
-        panelBackground = new PanelWithBackImage("project/demo/src/main/img/backs/backStarterFrame.png");
+        panelBackground = new PanelWithBackImage("./data/images/backs/backStarterFrame.png");
         panelBackground.setPreferredSize(size);
         panelBackground.setLayout(new BorderLayout());
             //PanelCenter:
@@ -86,12 +86,12 @@ public class StarterFrame extends JFrame implements ActionListener{
                     //End BotonInicio.
                 //End PanelBotonInicio. 
                 //PanelLinksInicio:
-                panelLinksInicio = new PanelWithBackImage("project/demo/src/main/img/backs/backPanelSouthStarterFrame");
+                panelLinksInicio = new PanelWithBackImage("./data/images/backs/backPanelSouthStarterFrame");
                 panelLinksInicio.setMinimumSize(new Dimension((int)size.getWidth(),100));
                 panelLinksInicio.setLayout(new GridLayout(2,2));
                     //LinkGithubButton:
                     linkGithubButton=new MyButton("   Sebas1057",hiper,foreground,null,this);
-                    linkGithubButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/github.png")));
+                    linkGithubButton.setIcon(new ImageIcon(tk.getImage("./data/images/icons/github.png")));
                     linkGithubButton.setOpaque(false);
                     linkGithubButton.setFocusable(false);
                     linkGithubButton.setBorderPainted(false);
@@ -99,20 +99,20 @@ public class StarterFrame extends JFrame implements ActionListener{
                     //LinkURJCmailButton:
                     linkURJCmailButton=new MyButton(" sr.entrerrios.2020",hiper,foreground,null,this);
                     linkURJCmailButton.setFocusable(false);
-                    linkURJCmailButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/urjc.png")));
+                    linkURJCmailButton.setIcon(new ImageIcon(tk.getImage("./data/images/icons/urjc.png")));
                     linkURJCmailButton.setOpaque(false);
                     linkURJCmailButton.setBorderPainted(false);
                     //End LinkURJCmailButton.
                     //LinkGmailButton:
                     linkGmailButton = new MyButton(" sebssgarcia502580",hiper,foreground,null,this);
                     linkGmailButton.setFocusable(false);
-                    linkGmailButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/gmail.png")));
+                    linkGmailButton.setIcon(new ImageIcon(tk.getImage("./data/images/icons/gmail.png")));
                     linkGmailButton.setOpaque(false);
                     linkGmailButton.setBorderPainted(false);
                     //End LinkGmailButton.
                     //linkCodeWarsButton:
                     linkCodeWarsButton = new MyButton("  Sebas1705",hiper,foreground,null,this);
-                    linkCodeWarsButton.setIcon(new ImageIcon(tk.getImage("project/demo/src/main/img/icons/codewars.png")));
+                    linkCodeWarsButton.setIcon(new ImageIcon(tk.getImage("./data/images/icons/codewars.png")));
                     linkCodeWarsButton.setOpaque(false);
                     linkCodeWarsButton.setFocusable(false);
                     linkCodeWarsButton.setBorderPainted(false);
@@ -140,7 +140,7 @@ public class StarterFrame extends JFrame implements ActionListener{
     private void initFrame(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(location);
-        setIconImage(tk.getImage("project/demo/src/main/img/icons/F_512px.png"));
+        setIconImage(tk.getImage("./data/images/icons/F_512px.png"));
         setTitle("FontApp");
         setResizable(false);
         setVisible(true);

@@ -1,0 +1,9 @@
+com\Launcher\FontDesktop.class
+com\GraphicsSwing\MyComponents\MyLabel.class
+com\GraphicsSwing\MyComponents\MyButton.class
+com\Launcher\ProgramLauncher.class
+com\GraphicsSwing\MyComponents\MyRadio.class
+com\GraphicsSwing\Frames\MainFrame.class
+com\App.class
+com\GraphicsSwing\MyComponents\PanelWithBackImage.class
+com\GraphicsSwing\Frames\StarterFrame.class

@@ -53,7 +53,7 @@ public class MainFrame extends JFrame{
     }
     private void initComponents(){
         //PanelBack:
-        panelBack=new PanelWithBackImage("project/demo/src/main/img/backs/back600pxDeg.png");
+        panelBack=new PanelWithBackImage("./data/images/backs/back600pxDeg.png");
         panelBack.setPreferredSize(size);
         panelBack.setLayout(new GridBagLayout());
             //LabelTitle:
@@ -158,7 +158,7 @@ public class MainFrame extends JFrame{
     private void initFrame(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(location);
-        setIconImage(tk.getImage("project/demo/src/main/img/icons/F_512px.png"));
+        setIconImage(tk.getImage("./data/images/icons/F_512px.png"));
         setTitle("FontApp");
         setResizable(false);
         setVisible(true);
